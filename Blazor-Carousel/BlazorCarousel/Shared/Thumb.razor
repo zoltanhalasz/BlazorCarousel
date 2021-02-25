@@ -1,0 +1,16 @@
+﻿<div class="alert @Type border-dark" @onclick="ExecCallBack"></div>
+
+@code {
+
+    [Parameter]
+    public string Type { get; set; }
+
+
+    [Parameter]
+    public EventCallback<int> SetCurrent { get; set; }
+
+    private async void ExecCallBack()
+    {
+        SetCurrent.InvokeAsync();
+    }
+}

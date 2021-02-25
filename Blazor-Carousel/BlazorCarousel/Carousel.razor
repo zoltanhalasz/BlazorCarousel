@@ -1,7 +1,7 @@
 ﻿@using System.Threading
 
-<div class="d-flex flex-column border-primary alert alert-info col-5">
-    <div class="d-flex justify-content-between align-items-center" style="height: 400px;">
+<div class="d-flex flex-column border-primary alert alert-info col-md-12">
+    <div class="d-flex justify-content-between align-items-center" style="height: 500px;">
         <img src="/next (5).png" style="transform: rotate(180deg);" @onclick="() => Manualy(true)"/>
         <div>
             @Render(currentPosition)
@@ -13,11 +13,11 @@
         {
             if(Math.Abs(currentPosition % Components.Length) == Array.IndexOf(Components, item))
             {
-                <div class="alert alert-danger border-dark"></div>
+                <Thumb Type="alert-danger" SetCurrent="((k) => CallBck(Array.IndexOf(Components, item)))" />
             }
             else
             {
-                <div class="alert alert-info border-dark"></div>
+                <Thumb Type="alert-info" SetCurrent="((k) => CallBck(Array.IndexOf(Components, item)))" />
             }
         }
     </div>
@@ -33,11 +33,22 @@
         else
             currentPosition++;
     }
+
     [Parameter]
     public Type[] Components { get; set; }
+
     int currentPosition;
     CancellationTokenSource cts;
     CancellationToken ct;
+
+    private async void CallBck(int k)
+    {
+        Console.WriteLine("CallBack called " + k.ToString());
+        currentPosition = k;
+        await InvokeAsync(() => this.StateHasChanged());
+
+    }
+
     protected override async Task OnInitializedAsync()
     {
         cts = new CancellationTokenSource();
@@ -48,7 +59,7 @@
     {
         while (!ct.IsCancellationRequested)
         {
-            await Task.Delay(2500, ct);
+            await Task.Delay(3500, ct);
             currentPosition++;
             await InvokeAsync(() => this.StateHasChanged());
         }
