@@ -4,23 +4,26 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
 
 <div class="btn-group">
     @foreach (var item in types)
     {
         if (Array.IndexOf(types, item) == selected)
         {
-            <button class="btn btn-primary">@item.Name</button>
+            <button class="btn btn-outline-success">@item.Name</button>
         }
         else
         {
-            <button class="btn btn-secondary" @onclick="() => selected = Array.IndexOf(types, item)">@item.Name</button>
+            <button class="btn btn-outline-secondary" @onclick="() => selected = Array.IndexOf(types, item)">@item.Name</button>
         }
     }
 </div>
+<br />
+<hr />
+<div class="alert alert-info">
+    @GetRenderFragment(types[selected])
+</div>
 
-@GetRenderFragment(types[selected])
 
 @code{
     RenderFragment GetRenderFragment(Type type)
