@@ -60,3 +60,7 @@ C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\
 C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\BlazorCarousel.csproj.CopyComplete
 C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\RazorDeclaration\Shared\Thumb.razor.g.cs
 C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\Razor\Shared\Thumb.razor.g.cs
+C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\RazorDeclaration\ImageCarousel.razor.g.cs
+C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\RazorDeclaration\Pages\Imgcarousel.razor.g.cs
+C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\Razor\ImageCarousel.razor.g.cs
+C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\obj\Debug\net5.0\Razor\Pages\Imgcarousel.razor.g.cs

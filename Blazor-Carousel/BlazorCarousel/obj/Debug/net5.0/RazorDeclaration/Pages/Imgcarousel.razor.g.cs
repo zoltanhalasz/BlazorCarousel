@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazorCarousel.Shared
+namespace BlazorCarousel.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,8 @@ using BlazorCarousel.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/imgcarousel")]
+    public partial class Imgcarousel : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,16 +91,12 @@ using BlazorCarousel.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+#line 7 "C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\Pages\Imgcarousel.razor"
+      
+    string [] images =
     {
-        collapseNavMenu = !collapseNavMenu;
-    }
+        "1.jpg", "2.jpg", "3.jpg"
+    };
 
 #line default
 #line hidden

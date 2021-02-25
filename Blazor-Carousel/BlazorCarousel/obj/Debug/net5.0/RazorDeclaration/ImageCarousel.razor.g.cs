@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazorCarousel.Shared
+namespace BlazorCarousel
 {
     #line hidden
     using System;
@@ -82,7 +82,14 @@ using BlazorCarousel.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 1 "C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\ImageCarousel.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class ImageCarousel : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,16 +97,61 @@ using BlazorCarousel.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\Shared\NavMenu.razor"
+#line 26 "C:\Dotnet\DavidSeesSharp-Videos\Blazor-Carousel\BlazorCarousel\ImageCarousel.razor"
        
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    public void Manualy(bool backwards)
     {
-        collapseNavMenu = !collapseNavMenu;
+        if (!cts.IsCancellationRequested)
+            cts.Cancel();
+        if (backwards)
+            currentPosition--;
+        else
+            currentPosition++;
+        if (currentPosition >= Images.Length) currentPosition = 0;
+        if (currentPosition < 0) currentPosition = Images.Length - 1;
     }
+
+    [Parameter]
+
+    public string[] Images { get; set; }
+
+    //public Type[] Components { get; set; }
+
+    int currentPosition;
+    CancellationTokenSource cts;
+    CancellationToken ct;
+
+    private async void CallBck(int k)
+    {
+        Console.WriteLine("CallBack called " + k.ToString());
+        currentPosition = k;
+        await InvokeAsync(() => this.StateHasChanged());
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        cts = new CancellationTokenSource();
+        ct = cts.Token;
+        Walkthrough();
+    }
+    public async Task Walkthrough()
+    {
+        while (!ct.IsCancellationRequested)
+        {
+            await Task.Delay(3500, ct);
+            currentPosition++;
+            await InvokeAsync(() => this.StateHasChanged());
+        }
+    }
+    //public RenderFragment Render(int position)
+    //{
+    //    return RenderTreeBuilder =>
+    //    {
+    //        RenderTreeBuilder.OpenComponent(0, Components[Math.Abs(position % Components.Length)]);
+    //        RenderTreeBuilder.CloseComponent();
+    //    };
+    //}
 
 #line default
 #line hidden
